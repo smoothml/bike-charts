@@ -1,0 +1,6 @@
+-e .
+
+black~=19.10b0
+flake8~=3.7
+pytest~=5.4
+python-dotenv~=0.12
