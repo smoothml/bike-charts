@@ -1,6 +1,9 @@
+# Local package
 -e .
 
+# Dev requirements
 black~=19.10b0
 flake8~=3.7
 pytest~=5.4
 python-dotenv~=0.12
+requests~=2.23

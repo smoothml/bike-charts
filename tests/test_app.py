@@ -1,17 +1,15 @@
-import falcon
 import pytest
-from falcon import testing
+from fastapi.testclient import TestClient
 
-from bike_charts.app import api
+from bike_charts.main import app
 
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def client():
-    return testing.TestClient(api)
+    return TestClient(app)
 
 
-def test_default_response(client):
-    response = client.simulate_get("/")
-
-    assert response.status == falcon.HTTP_OK
-    assert response.content == b"Hello, world!"
+def test_root(client):
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"message": "Hello World"}
