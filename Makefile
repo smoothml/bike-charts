@@ -23,7 +23,7 @@ test: ## Run tests.
 	@pytest
 
 run: ## Run application
-	@gunicorn --reload bike_charts.app
+	@uvicorn bike_charts.main:app --reload
 
 #################################################################################
 # Self Documenting Commands                                                     #
