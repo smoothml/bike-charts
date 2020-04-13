@@ -12,14 +12,20 @@ PACKAGE_DIR = ROOT_DIR / "bike_charts"
 
 # Get package version
 VERSION = "0.0.1"  # Default version
-version_pattern = re.compile("(?<=__version__\s=\s['\'])\d\.\d\.?\d?")
+version_pattern = re.compile("(?<=__version__\s=\s[''])\d\.\d\.?\d?")
 with open(PACKAGE_DIR / "__init__.py") as f:
     for line in f:
         res = version_pattern.search(line.strip())
         if res is not None:
             VERSION = res.group(0)
 
-REQUIREMENTS = ["fastapi~=0.54", "uvicorn~=0.11"]
+REQUIREMENTS = [
+    "databases[postgresql]~=0.2",
+    "python-dotenv~=0.12",
+    "fastapi~=0.54",
+    "sqlalchemy~=1.3",
+    "uvicorn~=0.11",
+]
 
 setup(
     name=NAME,
